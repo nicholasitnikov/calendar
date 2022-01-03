@@ -1,20 +1,37 @@
+import { useEffect, useState } from 'react';
 import styles from '../styles/index.module.css';
+import { v4 as uuidv4 } from 'uuid';
+
+import data from '../utils/data';
 
 export default function Home() {
 
+  const [selected, setSelected] = useState([]);
+
+  const cellClickHandler = (e) => {
+    let prevState = [...selected];
+    prevState.push(e.target.getAttribute('data-id'))
+    localStorage.setItem('selected', JSON.stringify(prevState));
+    setSelected(prevState)
+  }
+
+  useEffect(() => {
+    const data = localStorage.getItem('selected');
+    if(data) {
+      setSelected(JSON.parse(data));
+    }
+  }, [])
+
+  const getCellClassName = (id, isLabel) => {
+    if(selected.find((el) => el === id)) {
+      return [styles.cell, styles.cellSelected].join(' ');
+    }
+    return isLabel ? styles.label : styles.cell
+  }
+
   const renderCells = () => {
-    return Array.from(Array(52).keys()).slice(1).map(i => {
-      return(
-        <>
-          <span className={styles.label}>{i}</span>
-          <span className={styles.cell}>{i * 5}</span>
-          <span className={styles.cell}>{i * 10}</span>
-          <span className={styles.cell}>{i * 15}</span>
-          <span className={styles.cell}>{i * 20}</span>
-          <span className={styles.cell}>{i * 25}</span>
-          <span className={[styles.cell, styles.cellSelected].join(' ')}>{i * 30}</span>
-        </>
-      )
+    return data.map(el => {
+      return <span key={el.id} data-id={el.id} onClick={cellClickHandler} className={getCellClassName(el.id, el.isLabel)}>{el.value}</span>
     })
   }
 

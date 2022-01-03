@@ -17,6 +17,8 @@
     border: 1px solid white;
     border-radius: 15px;
     padding: 5px;
+    max-width: 480px;
+    margin: 0 auto;
 }
 
 .cells {
@@ -24,6 +26,8 @@
     grid-template-columns: repeat(7, 1fr);
     padding: 20px;
     grid-gap: 5px;
+    max-width: 480px;
+    margin: 0 auto;
 }
 
 .cell {
@@ -32,6 +36,11 @@
     padding: 2px;
     font-size: 14px;
     text-align: center;
+    cursor: pointer;
+}
+
+.cell:hover {
+    opacity: .7;
 }
 
 .cellSelected {

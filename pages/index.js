@@ -12,7 +12,7 @@ export default function Home() {
           <span className={styles.cell}>{i * 15}</span>
           <span className={styles.cell}>{i * 20}</span>
           <span className={styles.cell}>{i * 25}</span>
-          <span className={`${styles.cell} ${styles.cellSelected}`}>{i * 30}</span>
+          <span className={[styles.cell, styles.cellSelected]}>{i * 30}</span>
         </>
       )
     })
@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <header className={styles.header}>
-        <h1 className={styles.headingOne}>Jane's calendar 🤑</h1>
+        <h1 className={styles.headingOne}>Jane&rsquo;s calendar 🤑</h1>
         <h2 className={styles.headingTwo}>Накоплено всего: 5000 ₽</h2>
       </header>
       <main className={styles.cells}>

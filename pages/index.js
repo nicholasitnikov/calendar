@@ -12,7 +12,7 @@ export default function Home() {
           <span className={styles.cell}>{i * 15}</span>
           <span className={styles.cell}>{i * 20}</span>
           <span className={styles.cell}>{i * 25}</span>
-          <span className={[styles.cell, styles.cellSelected]}>{i * 30}</span>
+          <span className={[styles.cell, styles.cellSelected].join(' ')}>{i * 30}</span>
         </>
       )
     })

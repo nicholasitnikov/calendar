@@ -37,6 +37,12 @@ export default function Home() {
   }
 
   const calculateTotal = () => {
+    return data.reduce((res, current) => {
+      return res += parseInt(current.value)
+    }, 0)
+  }
+
+  const calculateCurrent = () => {
     return selected.reduce((res, current) => {
       return res += parseInt(current.value)
     }, 0)
@@ -65,7 +71,7 @@ export default function Home() {
       </Head>
       <header className={styles.header}>
         <h1 className={styles.headingOne}>🤑 Money calendar 🤑</h1>
-        <h2 className={styles.headingTwo}>{`Накоплено всего: ${calculateTotal()} ₽`}</h2>
+        <h2 className={styles.headingTwo}>{`Накоплено: ${calculateCurrent()} ₽ из ${calculateTotal()} ₽`}</h2>
       </header>
       <main className={styles.cells}>
         { renderCells() }

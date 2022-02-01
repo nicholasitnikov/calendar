@@ -74,7 +74,8 @@ export default function Home() {
         <h2 className={styles.headingTwo}>{`Накоплено: ${calculateCurrent()} ₽ из ${calculateTotal()} ₽`}</h2>
       </header>
       <main className={styles.cells}>
-        { renderCells() }
+        {/* { renderCells() } */}
+        { JSON.stringify(selected) }
       </main>
     </>
   )
